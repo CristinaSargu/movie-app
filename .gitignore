@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Project stuff
+node_modules
+.DS_Store
+README2.md
+
