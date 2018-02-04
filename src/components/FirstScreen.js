@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import '../style.css';
+import React, {Component} from 'react';
 
 class FirstScreen extends Component {
 	render() {
@@ -17,8 +16,7 @@ class FirstScreen extends Component {
 					</div>
 				</div>
 			</div>
-		)
-
+		);
 	}	
 }
 

@@ -1,16 +1,16 @@
-import React, { Component } 				from 'react';
+import React, {Component} 		from 'react';
 import ReactDOM 							from 'react-dom';
-import { Router, Route, browserHistory } 	from 'react-router';
+import {Router, Route, browserHistory} 	from 'react-router';
 
 import './style.css';
-import Header 			from './components/Header';
+import Header 				from './components/Header';
 import SectionHome 		from './components/SectionHome';
-import Section 			from './components/Section';
-import MovieItem 		from './components/MovieItem';
-import Trailer 			from './components/Trailer';
+import Section 				from './components/Section';
+import MovieItem 			from './components/MovieItem';
+import Trailer 				from './components/Trailer';
 import SimilarMovies 	from './components/SimilarMovies';
-import Search 			from './components/Search';
-import Footer 			from './components/Footer';
+import Search 				from './components/Search';
+import Footer 				from './components/Footer';
 
 class Home extends Component {
 	render() {
@@ -28,6 +28,7 @@ class Home extends Component {
 		);
 	}
 }
+
 class Popular extends Component {
 	render() {
 		return (
@@ -44,6 +45,7 @@ class Popular extends Component {
 		);
 	}
 }
+
 class TopRated extends Component {
 	render() {
 		return (
@@ -60,6 +62,7 @@ class TopRated extends Component {
 		);
 	}
 }
+
 class Upcoming extends Component {
 	render() {
 		return (
@@ -76,6 +79,7 @@ class Upcoming extends Component {
 		);
 	}
 }
+
 class SearchMovie extends Component {
 	render() {
 		return (

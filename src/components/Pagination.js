@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-import '../style.css';
+import React, {Component} from 'react';
 
 class Pagination extends Component {
 	render() {
@@ -13,7 +11,7 @@ class Pagination extends Component {
 					onClick={this.props.clickNextBtn}>&#62;
 				</li>
 			</ul>
-		)
+		);
 	}	
 }
 
