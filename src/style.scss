@@ -2,9 +2,11 @@
 @import "css-modules/grid12.css";
 @import "css-modules/reset.css";
 
+/*Components*/
+@import "sass/main";
+
 /*Variables*/
 $primary-color: #333;
-
 
 /*General styles*/
 h1, h2, h3, h4, h5, h6, p, a, li, span{
@@ -63,9 +65,9 @@ h1, h2, h3, h4, h5, h6, p, a, li, span{
 }
 
 /*Header styles*/
-.header-wrapper{
+/*.header-wrapper{
 	padding: 10px 0;
-}
+}*/
 
 /*Menu styles*/
 .menu{
@@ -462,31 +464,3 @@ h1, h2, h3, h4, h5, h6, p, a, li, span{
 .visible-single{
 	display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,7 +2,7 @@ import React, {Component} 		from 'react';
 import ReactDOM 							from 'react-dom';
 import {Router, Route, browserHistory} 	from 'react-router';
 
-import './style.css';
+import './style.scss';
 import Header 				from './components/Header';
 import SectionHome 		from './components/SectionHome';
 import Section 				from './components/Section';
