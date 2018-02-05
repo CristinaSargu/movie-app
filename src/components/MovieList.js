@@ -50,7 +50,7 @@ class MovieList extends Component {
 			.then( response => response.json())
 			.then( ({results: items}) => {
 				return this.setState({items});
-		})
+			})
 	}
 
 	renderMovieItem(item) {

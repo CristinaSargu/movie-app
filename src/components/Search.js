@@ -23,11 +23,11 @@ class Search extends Component {
 	}
 
 	changePage(){
-		fetch('https://api.themoviedb.org/3/movie/popular?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
-			.then( response => response.json())
-			.then( ({results: items}) => {
-				return this.setState({items});
-		})
+		// fetch('https://api.themoviedb.org/3/movie/popular?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
+		// 	.then( response => response.json())
+		// 	.then( ({results: items}) => {
+		// 		return this.setState({items});
+		// 	})
 	}
 
 	handleSearch() {
@@ -35,7 +35,7 @@ class Search extends Component {
 			.then( response => response.json())
 			.then( ({results: items}) => { 
 				return this.setState({items});
-		})
+			})
 	}
 
 	inputText(event) {

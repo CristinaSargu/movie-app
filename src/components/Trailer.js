@@ -19,7 +19,7 @@ class Trailer extends Component {
 		fetch('https://api.themoviedb.org/3/movie/'  + id + '/videos?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
 			.then( response => response.json())
 			.then((json) => {
-        this.setState({trailers: json});
+				this.setState({trailers: json});
 	    });
 	}
 
