@@ -48,7 +48,7 @@ class Cast extends Component {
 
 		return (
 			<ul className="cast visible-single">
-				{cast && cast.map( actor => 
+				{cast && cast.map(actor => 
 					this.renderActor(actor)
 				)}
 			</ul>
