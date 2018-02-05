@@ -1,24 +1,26 @@
-import React, { Component } from 'react';
-import '../style.css';
+import React, {Component} from 'react';
 
 import FirstScreen from './FirstScreen';
 import MovieList from './MovieList';
 
 class Section extends Component {
 	render() {
+		const {
+			firstScreenTitle,
+			firstScreenSubtitle,
+			category,
+		} = this.props;
 		return (
 			<section> 
 				<FirstScreen 
-					firstScreenTitle={this.props.firstScreenTitle}
-					firstScreenSubtitle={this.props.firstScreenSubtitle}/> 
+					firstScreenTitle={firstScreenTitle}
+					firstScreenSubtitle={firstScreenSubtitle}/> 
 					<div className="section">
-						<MovieList category={this.props.category}/>
+						<MovieList category={category}/>
 					</div>
-
 			</section>
-		)
-
-	}	
+		);
+	}
 }
 
 export default Section;

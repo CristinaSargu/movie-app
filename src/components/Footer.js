@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import '../style.css';
+import React, {Component} from 'react';
 
 import Logo from './Logo';
 
@@ -18,8 +17,7 @@ class Footer extends Component {
 					</div>	
 				</div>
 			</div>
-		)
-
+		);
 	}	
 }
 

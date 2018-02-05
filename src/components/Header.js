@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import '../style.css';
+import React, {Component} from 'react';
 
 import Menu from './Menu';
 import Logo from './Logo';
@@ -19,9 +18,8 @@ class Header extends Component {
 					</div>	
 				</div>
 			</div>
-		)
-
-	}	
+		);
+	}
 }
 
 export default Header;
