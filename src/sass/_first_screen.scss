@@ -1,0 +1,47 @@
+.first-screen{
+	background-image: url("../public/img/first-screen.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+
+	&::before{
+		width: 70%;
+		height: 1px;
+		background-color: #FFF;
+		bottom: 30px;
+		z-index: 2;
+	}
+
+	.home-page &{
+		&:after{
+			width: 70%;
+			height: 1px;
+			background-color: #FFF;
+			top: 30px;
+			z-index: 2;
+			right: 0;
+		}
+	}
+}
+
+.main-title{
+	font-size: 50px;
+	color: #fff;
+	line-height: 60px;
+}
+
+.title-container{
+	padding: 60px 0;
+
+	.home-page &{
+		padding: 120px 0;
+	}
+}
+
+.main-subtitle{
+	font-size: 15px;
+	color: #fff;
+	line-height: 20px;
+	max-width: 600px;
+	font-weight: 300;
+}

@@ -63,7 +63,7 @@ class MovieList extends Component {
 					<h4 className="movies__item-title">{item.title}</h4>
 					<span className="movies__item-votes">{item.vote_average} &#9733;</span>
 					<MovieItem id={item.id}/>
-					<Link to={`/movie/item.id`} className="movies__item-link">View more</Link>
+					<Link to={'/movie/' + item.id} className="movies__item-link">View more</Link>
 				</div>
 			</li>
 		);

@@ -93,6 +93,7 @@ class SearchMovie extends Component {
 		);
 	}
 }
+
 class SingleMovie extends Component {
 	render() {
 		return (
@@ -133,7 +134,7 @@ class SingleMovie extends Component {
 }
 
 ReactDOM.render((
-  	<Router history={browserHistory}>
+  	<Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
   	    <Route path="/" component={Home} />
   	    <Route path="/popular" component={Popular} />
   	    <Route path="/top_rated" component={TopRated} />

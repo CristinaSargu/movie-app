@@ -24,8 +24,8 @@ class Trailer extends Component {
 	}
 
 	render() {
-		const trailers = this.state.trailers;
-		const youtubeKey = trailers && trailers.results[0].key;
+		const {trailers} = this.state;
+		const youtubeKey = trailers.results && trailers.results[0].key;
 
 		return (
 			<div className="trailer">

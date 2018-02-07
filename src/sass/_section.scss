@@ -1,0 +1,22 @@
+.section{
+	padding: 70px 0;
+	background-color: #F4F4F2;
+	border-bottom: 1px solid #949494;
+}
+
+.section-title{
+	font-size: 35px;
+	color: $primary-color;
+	text-align: center;
+	line-height: 45px;
+	margin-bottom: 10px;
+}
+
+.section-subtitle{
+	font-size: 15px;
+	color: $primary-color;
+	text-align: center;
+	max-width: 600px;
+	margin: 0 auto 50px;
+	line-height: 20px;
+}
