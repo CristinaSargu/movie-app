@@ -39,8 +39,8 @@ class MovieItem extends Component {
 		return (
 			<div className={itemClassNames}>
 				<div className="movie-item__parts visible-single">
-					{movie.poster_path ? 
-						<img src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`} alt={movie.title} className="movies-item__img"/>
+					{movie.poster_path
+						? <img src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`} alt={movie.title} className="movies-item__img"/>
 						: <img src={posterLarge} alt="" className="movies-item__img"/>} 
 				</div>
 				<div className="movie-item__parts movie-item__parts--pd">

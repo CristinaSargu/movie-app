@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 
-import MovieItem from './MovieItem';
+import MovieCard from './MovieCard';
 import FirstScreen from './FirstScreen';
-import posterSmall from './../../public/img/185x278.jpg';
 
 class Search extends Component {
 	constructor(props) {
@@ -19,15 +17,15 @@ class Search extends Component {
 	}
 
 	componentWillMount() {
-		this.changePage();
+		this.renderPopular();
 	}
 
-	changePage(){
-		// fetch('https://api.themoviedb.org/3/movie/popular?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
-		// 	.then( response => response.json())
-		// 	.then( ({results: items}) => {
-		// 		return this.setState({items});
-		// 	})
+	renderPopular(){
+		fetch('https://api.themoviedb.org/3/movie/popular?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
+			.then( response => response.json())
+			.then( ({results: items}) => {
+				return this.setState({items});
+			})
 	}
 
 	handleSearch() {
@@ -42,22 +40,6 @@ class Search extends Component {
 		this.setState({
 			searchResult: event.target.value,
 		});
-	}
-
-	renderItem(item) {
-		return (
-			<li key={item.id} className="movies__item">
-				{item.poster_path ? 
-					<img src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2" + item.poster_path} alt="" className="movies__item-img"/> 
-					: <img src={posterSmall} alt="" className="movies__item-img"/>} 
-				<div className="movies__description">
-					<h4 className="movies__item-title">{item.title}</h4>
-					<span className="movies__item-votes">{item.vote_average} &#9733;</span>
-					<MovieItem id={item.id}/>
-					<Link to={`/movie/item.id`} className="movies__item-link">View more</Link>
-				</div>
-			</li>
-		);
 	}
 
 	render() {
@@ -75,7 +57,9 @@ class Search extends Component {
 								<input type="text" className="search-field" onChange={this.inputText} placeholder="Enter movie title"/>
 								<span className="search-btn" onClick={this.handleSearch}>Search</span>
 								<ul className="movies">
-									{items.map( item => this.renderItem(item))}
+									{items.map((item, index) =>
+										<MovieCard key={index} item={item} />
+									)}
 								</ul>
 							</div>
 						</div>

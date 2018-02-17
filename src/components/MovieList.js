@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 
-import MovieItem from './MovieItem';
 import Pagination from './Pagination';
-
-import posterSmall from './../../public/img/185x278.jpg';
+import MovieCard from './MovieCard';
 
 class MovieList extends Component {
 	constructor(props) {
@@ -52,22 +49,6 @@ class MovieList extends Component {
 				return this.setState({items});
 			})
 	}
-
-	renderMovieItem(item) {
-		return (
-			<li key={item.id} className="movies__item">
-				{item.poster_path ? 
-					<img src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2" + item.poster_path} alt="" className="movies__item-img"/> 
-					: <img src={posterSmall} alt="" className="movies__item-img"/>}
-				<div className="movies__description">
-					<h4 className="movies__item-title">{item.title}</h4>
-					<span className="movies__item-votes">{item.vote_average} &#9733;</span>
-					<MovieItem id={item.id}/>
-					<Link to={'/movie/' + item.id} className="movies__item-link">View more</Link>
-				</div>
-			</li>
-		);
-	}
 	
 	render() {
 		const {items} = this.state;
@@ -82,11 +63,14 @@ class MovieList extends Component {
 				<div className="row">
 					<div className="col-md-12">
 						<ul className="movies">
-							{items && items.map( item => this.renderMovieItem(item))}
+							{items.map((item, index) =>
+								<MovieCard key={index} item={item} />
+							)}
 						</ul>
 						<Pagination 
 							clickNextBtn={this.increase}
-							clickPrevBtn={this.descrease}/>
+							clickPrevBtn={this.descrease}
+						/>
 					</div>
 				</div>
 			</div>
