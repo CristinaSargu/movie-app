@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 import Pagination from './Pagination';
 import MovieCard from './MovieCard';
+import {
+	nextPage,
+	prevPage,
+} from './../actions/pagination';
 
 class MovieList extends Component {
 	constructor(props) {
@@ -9,41 +15,27 @@ class MovieList extends Component {
 
 		this.state = {
 			items: [], 
-			page: 1,
 		};
-
-		this.increase = this.increase.bind(this);
-		this.descrease = this.descrease.bind(this);
-	}
-
-	increase(){
-		if(this.state.page + 1 > 0){
-			this.setState({
-				page: this.state.page + 1
-			});
-
-			this.changePage(this.state.page + 1);
-		}
-	}
-
-	descrease(){
-		if(this.state.page - 1 > 0){
-			this.setState({
-				page: this.state.page - 1
-			});
-
-			this.changePage(this.state.page - 1);
-		}
 	}
 
 	componentWillMount() {
-		this.changePage(this.state.page);
+		this.fetchPageData(this.props.pageNumber);
 	}
 
-	changePage(page){
+	componentWillReceiveProps(nextProps) {
+	  const {
+	    pageNumber,
+	  } = this.props;
+
+	  if (pageNumber !== nextProps.pageNumber) {
+	    this.fetchPageData(nextProps.pageNumber);
+	  }
+	}
+
+	fetchPageData(pageNumber){
 		const {category} = this.props;
 
-		fetch('https://api.themoviedb.org/3/movie/'  + category + '?api_key=629599926ec66fe2630d82d78db80df6&language=en-US&page=' + page)
+		fetch('https://api.themoviedb.org/3/movie/'  + category + '?api_key=629599926ec66fe2630d82d78db80df6&language=en-US&page=' + pageNumber)
 			.then( response => response.json())
 			.then( ({results: items}) => {
 				return this.setState({items});
@@ -52,7 +44,15 @@ class MovieList extends Component {
 	
 	render() {
 		const {items} = this.state;
-		const {pageClass} = this.props;
+		const {
+			pageClass,
+			nextPage,
+			prevPage,
+		} = this.props;
+
+		if (!items) {
+			return null;
+		}
 
 		if(pageClass === "home-page"){
 			items.length = 4;
@@ -68,8 +68,8 @@ class MovieList extends Component {
 							)}
 						</ul>
 						<Pagination 
-							clickNextBtn={this.increase}
-							clickPrevBtn={this.descrease}
+							clickNextBtn={nextPage}
+							clickPrevBtn={prevPage}
 						/>
 					</div>
 				</div>
@@ -78,4 +78,20 @@ class MovieList extends Component {
 	}	
 }
 
-export default MovieList;
+function mapStateToProps(state) {
+	return {
+		pageNumber: state.pagination,
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		nextPage: bindActionCreators(nextPage, dispatch),
+		prevPage: bindActionCreators(prevPage, dispatch),
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(MovieList);

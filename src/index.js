@@ -1,6 +1,8 @@
 import React, {Component} 		from 'react';
 import ReactDOM 							from 'react-dom';
 import {Router, Route, browserHistory} 	from 'react-router';
+import {Provider} from 'react-redux';
+import store from './store';
 
 import './style.scss';
 import Header 				from './components/Header';
@@ -133,14 +135,18 @@ class SingleMovie extends Component {
 	}
 }
 
+const storeInstance = store();
+
 ReactDOM.render((
-  	<Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
-  	    <Route path="/" component={Home} />
-  	    <Route path="/popular" component={Popular} />
-  	    <Route path="/top_rated" component={TopRated} />
-  	    <Route path="/upcoming" component={Upcoming} />
-  	    <Route path="/search" component={SearchMovie} />
-  	    <Route path="/movie/:id" component={SingleMovie} />
-  	</Router>
+  	<Provider store={storeInstance}>
+  		<Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
+  		    <Route path="/" component={Home} />
+  		    <Route path="/popular" component={Popular} />
+  		    <Route path="/top_rated" component={TopRated} />
+  		    <Route path="/upcoming" component={Upcoming} />
+  		    <Route path="/search" component={SearchMovie} />
+  		    <Route path="/movie/:id" component={SingleMovie} />
+  		</Router>
+  	</Provider>
   ), document.getElementById('root')
 );
