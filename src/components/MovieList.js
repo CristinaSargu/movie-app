@@ -80,7 +80,7 @@ class MovieList extends Component {
 
 function mapStateToProps(state) {
 	return {
-		pageNumber: state.pagination,
+		pageNumber: state.pagination.pageNumber,
 	}
 }
 
