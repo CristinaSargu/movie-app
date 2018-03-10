@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import pagination from './pagination';
-import voiceSearch from './voiceSearch';
+import search from './search';
 
 const rootReducer = combineReducers({
 	pagination,
-	voiceSearch,
+	search,
 });
 
 export default rootReducer;

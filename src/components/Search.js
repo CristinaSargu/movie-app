@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import MovieCard from './MovieCard';
 import FirstScreen from './FirstScreen';
 import VoiceSearch from './VoiceSearch';
+
+import {
+	setSearchValue,
+} from './../actions/search';
 
 class Search extends Component {
 	constructor(props) {
@@ -11,7 +16,6 @@ class Search extends Component {
 
 		this.state = {
 			items: [],
-			searchResult: ''
 		};
 
 		this.handleSearch = this.handleSearch.bind(this);
@@ -51,14 +55,10 @@ class Search extends Component {
 	}
 
 	inputText(event) {
-		this.setState({
-			searchResult: event.target ? event.target.value : this.props.voiceSearchResult,
-		});
+		this.props.setSearchValue(event.target.value);
 	}
 
 	render() {
-		const isVoiceRecognition = this.props.voiceSearchResult && this.props.voiceSearchResult;
-
 		return (
 			<div className="seach-section">
 				<FirstScreen
@@ -73,9 +73,12 @@ class Search extends Component {
 									type="text"
 									className="search__field"
 									onChange={this.inputText}
-									value={isVoiceRecognition ? isVoiceRecognition : this.state.searchResult}
+									value={this.props.searchValue}
 									placeholder="Enter movie title"/>
-								<span className="search__btn" onClick={this.handleSearch}>Search</span>
+								<button
+									className="search__btn"
+									onClick={this.handleSearch}
+								>Search</button>
 							</div>
 						</div>
 						<div className="col-md-4">
@@ -95,12 +98,19 @@ class Search extends Component {
 
 function mapStateToProps(state) {
 	return {
-		voiceSearchResult: state.voiceSearch.voiceSearchResult,
+		searchValue: state.search.searchValue,
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		setSearchValue: bindActionCreators(setSearchValue, dispatch),
 	}
 }
 
 export {Search};
 
 export default connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(Search);

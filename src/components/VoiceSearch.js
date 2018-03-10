@@ -3,8 +3,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import {
-	setVoiceSearchResult,
-} from './../actions/voiceSearch';
+	setSearchValue,
+} from './../actions/search';
 
 class VoiceSearch extends Component {
 	constructor(props) {
@@ -58,7 +58,7 @@ class VoiceSearch extends Component {
 			finalTranscript: this.capitalize(transcription),
 		});
 		
-		this.props.setVoiceSearchResult(this.state.finalTranscript);
+		this.props.setSearchValue(this.state.finalTranscript);
 	}
 
 	recognitionOnEnd() {
@@ -93,7 +93,7 @@ class VoiceSearch extends Component {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		setVoiceSearchResult: bindActionCreators(setVoiceSearchResult, dispatch),
+		setSearchValue: bindActionCreators(setSearchValue, dispatch),
 	}
 }
 
