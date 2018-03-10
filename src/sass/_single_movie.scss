@@ -1,0 +1,63 @@
+.single-movie {
+	padding: 60px 0;
+
+	&__about {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	&__overview {
+		max-height: 100%;
+		height: auto;
+		overflow: visible;
+		color: #fff;
+		font-weight: 300;
+		margin-top: 40px;
+	}
+
+	&__info-wrapper {
+		padding: 20px 30px 0;
+		max-width: 640px;
+	}
+
+	&__img {
+		display: block;
+		width: 230px;
+	}
+
+	&__cast-wrapper {
+		flex: 1;
+	}
+
+	&__title {
+		font-size: 25px;
+		color: #fff;
+		margin-bottom: 10px;
+	}
+
+	&__genres {
+		display: flex;
+		margin-bottom: 20px;
+		color: #e0e0e0;
+		font-size: 13px;
+		font-weight: 300;
+		font-style: italic;
+
+		li {
+			padding: 0 10px 0 0;
+		}
+	}
+
+	&__rating{
+		color: #fff;
+		margin-bottom: 20px;
+		font-weight: 300;
+	}
+
+	&__features{
+		color: #fff;
+		font-size: 15px;
+		font-weight: 300;
+		margin-bottom: 10px;
+	}
+}

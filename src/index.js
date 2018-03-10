@@ -8,13 +8,13 @@ import './style.scss';
 import Header 				from './components/Header';
 import SectionHome 		from './components/SectionHome';
 import Section 				from './components/Section';
-import MovieItem 			from './components/MovieItem';
+import SingleMovie 		from './components/SingleMovie';
 import Trailer 				from './components/Trailer';
 import SimilarMovies 	from './components/SimilarMovies';
 import Search 				from './components/Search';
 import Footer 				from './components/Footer';
 
-class Home extends Component {
+class HomePage extends Component {
 	render() {
 		return (
 			<div className="home-page">
@@ -31,7 +31,7 @@ class Home extends Component {
 	}
 }
 
-class Popular extends Component {
+class PopularPage extends Component {
 	render() {
 		return (
 			<div>
@@ -48,7 +48,7 @@ class Popular extends Component {
 	}
 }
 
-class TopRated extends Component {
+class TopRatedPage extends Component {
 	render() {
 		return (
 			<div>
@@ -65,7 +65,7 @@ class TopRated extends Component {
 	}
 }
 
-class Upcoming extends Component {
+class UpcomingPage extends Component {
 	render() {
 		return (
 			<div>
@@ -82,7 +82,7 @@ class Upcoming extends Component {
 	}
 }
 
-class SearchMovie extends Component {
+class SearchMoviePage extends Component {
 	render() {
 		return (
 			<div>
@@ -96,7 +96,7 @@ class SearchMovie extends Component {
 	}
 }
 
-class SingleMovie extends Component {
+class SingleMoviePage extends Component {
 	render() {
 		return (
 			<div>
@@ -105,7 +105,7 @@ class SingleMovie extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12">
-								<MovieItem id={this.props.params.id} pageClass="singleMovie"/>
+								<SingleMovie id={this.props.params.id} pageClass="singleMovie"/>
 							</div>
 						</div>
 					</div>
@@ -140,12 +140,12 @@ const storeInstance = store();
 ReactDOM.render((
   	<Provider store={storeInstance}>
   		<Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
-  		    <Route path="/" component={Home} />
-  		    <Route path="/popular" component={Popular} />
-  		    <Route path="/top_rated" component={TopRated} />
-  		    <Route path="/upcoming" component={Upcoming} />
-  		    <Route path="/search" component={SearchMovie} />
-  		    <Route path="/movie/:id" component={SingleMovie} />
+  		    <Route path="/" component={HomePage} />
+  		    <Route path="/popular" component={PopularPage} />
+  		    <Route path="/top_rated" component={TopRatedPage} />
+  		    <Route path="/upcoming" component={UpcomingPage} />
+  		    <Route path="/search" component={SearchMoviePage} />
+  		    <Route path="/movie/:id" component={SingleMoviePage} />
   		</Router>
   	</Provider>
   ), document.getElementById('root')

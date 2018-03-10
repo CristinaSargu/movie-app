@@ -1,10 +1,10 @@
-.first-screen{
+.first-screen {
 	background-image: url("../public/img/first-screen.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
 
-	&::before{
+	&::before {
 		width: 70%;
 		height: 1px;
 		background-color: #FFF;
@@ -12,7 +12,7 @@
 		z-index: 2;
 	}
 
-	.home-page &{
+	.home-page & {
 		&:after{
 			width: 70%;
 			height: 1px;
@@ -24,21 +24,21 @@
 	}
 }
 
-.main-title{
+.main-title {
 	font-size: 50px;
 	color: #fff;
 	line-height: 60px;
 }
 
-.title-container{
+.title-container {
 	padding: 60px 0;
 
-	.home-page &{
+	.home-page & {
 		padding: 120px 0;
 	}
 }
 
-.main-subtitle{
+.main-subtitle {
 	font-size: 15px;
 	color: #fff;
 	line-height: 20px;

@@ -26,15 +26,20 @@ class Cast extends Component {
 	}
 
 	renderActor(actor) {
+		const {
+			name,
+			profile_path,
+			character,
+		} = actor;
+		const actorAvatar = profile_path
+			? `https://image.tmdb.org/t/p/w132_and_h132_bestv2${profile_path}`
+			: actorImg;
+
 		return (
-			<li key={actor.name} className="cast__elem">
-				{
-					actor.profile_path ?
-					<img src={`https://image.tmdb.org/t/p/w132_and_h132_bestv2${actor.profile_path}`} alt={actor.name} className="cast__img"/>
-					: <img src={actorImg} alt="" className="cast__img"/>
-				} 
-				<h4 className="cast__title">{actor.name}</h4>
-				<p className="cast__character">{actor.character}</p>
+			<li key={name} className="cast__elem">
+				<img src={actorAvatar} alt={name} className="cast__img"/>
+				<h4 className="cast__name">{name}</h4>
+				<p className="cast__character">{character}</p>
 			</li>
 		);
 	}
@@ -47,7 +52,7 @@ class Cast extends Component {
 		};
 
 		return (
-			<ul className="cast visible-single">
+			<ul className="cast">
 				{cast && cast.map( actor => 
 					this.renderActor(actor)
 				)}
