@@ -48,6 +48,7 @@ class MovieList extends Component {
 			pageClass,
 			nextPage,
 			prevPage,
+			pageNumber,
 		} = this.props;
 
 		if (!items) {
@@ -68,6 +69,7 @@ class MovieList extends Component {
 							)}
 						</ul>
 						<Pagination 
+							currentPageNumber={pageNumber}
 							clickNextBtn={nextPage}
 							clickPrevBtn={prevPage}
 						/>

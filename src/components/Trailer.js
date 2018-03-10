@@ -29,8 +29,9 @@ class Trailer extends Component {
 
 		return (
 			<div className="trailer">
-				{youtubeKey ? <iframe width="560" height="315" src={'https://www.youtube.com/embed/' + youtubeKey}></iframe>
-				: <h5 className="no-results">Sorry, there are no results about trailer</h5>}
+				{youtubeKey
+					? <iframe width="560" height="315" src={'https://www.youtube.com/embed/' + youtubeKey}></iframe>
+					: <h5 className="no-results">Sorry, there are no results about trailer</h5>}
 			</div>
 		);
 	}	

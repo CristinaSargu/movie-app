@@ -1,37 +1,32 @@
-.similarMovies{
-	background-color: #F4F4F2;
-	padding: 40px 0;
-}
-
-.similar{
+.similar {
 	display: flex;
-	flex-direction: row;
 	justify-content: space-between;
 	list-style-type: none;
-}
-.similar__img{
-	margin-bottom: 5px;
-	display: block;
-}
-.similar__title{
-	display: inline-block;
-	text-decoration: none;
-	color: $primary-color;
-	font-size: 14px;
-	width: 200px;
-	vertical-align: top;
-}
-.similar__rating{
-	display: inline-block;
-	color: $primary-color;
-	font-size: 14px;
-	vertical-align: top;
-	width: 50px;
-	text-align: right;
-}
 
-.similar-wrapper-title{
-	font-size: 18px;
-	color: $primary-color;
-	margin-bottom: 20px;
+	&__img {
+		margin-bottom: 5px;
+		display: block;
+	}
+	&__title {
+		display: inline-block;
+		text-decoration: none;
+		color: $primary-color;
+		font-size: 14px;
+		width: 200px;
+		vertical-align: top;
+	}
+	&__rating {
+		display: inline-block;
+		color: $primary-color;
+		font-size: 14px;
+		vertical-align: top;
+		width: 50px;
+		text-align: right;
+	}
+
+	&-wrapper-title {
+		font-size: 18px;
+		color: $primary-color;
+		margin-bottom: 20px;
+	}
 }

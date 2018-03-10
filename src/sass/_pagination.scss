@@ -1,14 +1,13 @@
-.pagination{
+.pagination {
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
 
-	.home-page &{
+	.home-page & {
 		display: none;	
 	}
 }
 
-.pagination__item{
+.pagination__item {
 	width: 40px;
 	height: 25px;
 	background-color: #fff;

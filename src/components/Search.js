@@ -71,11 +71,11 @@ class Search extends Component {
 								<input
 									ref={(ref) => {this.input = ref}}
 									type="text"
-									className="search-field"
+									className="search__field"
 									onChange={this.inputText}
 									value={isVoiceRecognition ? isVoiceRecognition : this.state.searchResult}
 									placeholder="Enter movie title"/>
-								<span className="search-btn" onClick={this.handleSearch}>Search</span>
+								<span className="search__btn" onClick={this.handleSearch}>Search</span>
 							</div>
 						</div>
 						<div className="col-md-4">

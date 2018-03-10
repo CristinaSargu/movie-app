@@ -1,16 +1,10 @@
-.movies{
+.movies {
 	display: flex;
-	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
 
-.movies__description{
-	padding: 10px 15px;
-	position: relative;
-}
-
-.more-movies{
+.more-movies {
 	display: block;
 	margin: 0 auto;
 	width: 100px;

@@ -1,10 +1,9 @@
-.menu{
+.menu {
 	display: flex;
-	flex-direction: row;
 	justify-content: flex-end;
 	padding-top: 18px;
 }
-.menu__link{
+.menu__link {
 	color: $primary-color;
 	padding: 0 10px;
 	font-size: 16px;

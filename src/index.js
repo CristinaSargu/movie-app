@@ -21,9 +21,9 @@ class HomePage extends Component {
 				<header> <Header /> </header>
 				<section> 
 					<SectionHome 
-					firstScreenTitle="Biggest Movie-wiki"
-					firstScreenSubtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit aperiam !"
-					pageClass="home-page"/> 
+						firstScreenTitle="Biggest Movie-wiki"
+						firstScreenSubtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit aperiam !"
+						pageClass="home-page"/> 
 				</section>
 				<footer><Footer /></footer>
 			</div>
@@ -38,9 +38,9 @@ class PopularPage extends Component {
 				<header> <Header /> </header>
 				<section> 
 					<Section 
-					firstScreenTitle="The most popular"
-					firstScreenSubtitle="Consectetur adipisicing elit aperiam"
-					category="popular"/> 
+						firstScreenTitle="The most popular"
+						firstScreenSubtitle="Consectetur adipisicing elit aperiam"
+						category="popular"/> 
 				</section>
 				<footer><Footer /></footer>
 			</div>
@@ -55,9 +55,9 @@ class TopRatedPage extends Component {
 				<header> <Header /> </header>
 				<section> 
 					<Section 
-					firstScreenTitle="Top rated movies"
-					firstScreenSubtitle="Consectetur adipisicing elit aperiam"
-					category="top_rated"/> 
+						firstScreenTitle="Top rated movies"
+						firstScreenSubtitle="Consectetur adipisicing elit aperiam"
+						category="top_rated"/> 
 				</section>
 				<footer><Footer /></footer>
 			</div>
@@ -72,9 +72,9 @@ class UpcomingPage extends Component {
 				<header> <Header /> </header>
 				<section> 
 					<Section 
-					firstScreenTitle="Upcoming movies"
-					firstScreenSubtitle="Consectetur adipisicing elit aperiam"
-					category="upcoming"/> 
+						firstScreenTitle="Upcoming movies"
+						firstScreenSubtitle="Consectetur adipisicing elit aperiam"
+						category="upcoming"/> 
 				</section>
 				<footer><Footer /></footer>
 			</div>
@@ -101,11 +101,11 @@ class SingleMoviePage extends Component {
 		return (
 			<div>
 				<header> <Header /> </header>
-				<section className="singleItemSection"> 
+				<section className="single-movie-section"> 
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12">
-								<SingleMovie id={this.props.params.id} pageClass="singleMovie"/>
+								<SingleMovie id={this.props.params.id} />
 							</div>
 						</div>
 					</div>
@@ -114,17 +114,17 @@ class SingleMoviePage extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12">
-								<Trailer id={this.props.params.id} pageClass="singleMovie"/>
+								<Trailer id={this.props.params.id} />
 							</div>
 						</div>
 					</div>
 				</section>
-				<section className="similarMovies"> 
+				<section className="similar-movies-section"> 
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12">
 								<h3 className="similar-wrapper-title">Similar movies</h3>
-								<SimilarMovies id={this.props.params.id} pageClass="singleMovie"/>
+								<SimilarMovies id={this.props.params.id} />
 							</div>
 						</div>
 					</div>

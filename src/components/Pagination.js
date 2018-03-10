@@ -21,12 +21,14 @@ class Pagination extends Component {
 	render() {
 		return (
 			<ul className="pagination">
+				{this.props.currentPageNumber > 1 &&
+					<li
+						className='pagination__item'
+						onClick={this.handlePrevBtnClick}>&#60;
+					</li>
+				}
 				<li
-					className='pagination__item pagination__item--prev'
-					onClick={this.handlePrevBtnClick}>&#60;
-				</li>
-				<li
-					className="pagination__item pagination__item--next"
+					className="pagination__item"
 					onClick={this.handleNextBtnClick}>&#62;
 				</li>
 			</ul>
