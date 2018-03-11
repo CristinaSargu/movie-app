@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
+import classNames from 'classnames';
 import {
 	setSearchValue,
 } from './../actions/search';
+import SvgMic from './Svg/SvgMic';
 
 class VoiceSearch extends Component {
 	constructor(props) {
@@ -80,15 +82,27 @@ class VoiceSearch extends Component {
 	}
 
 	render() {
+		const buttonClasses = classNames('voice-search__btn g-before', {
+			'state-recording': this.state.isRecognising && !this.props.searchValue,
+		});
+
 		return (
-			<div>
-				<button
-					className="voice-search"
+			<div className="voice-search">
+				<div
+					className={buttonClasses}
 					onClick={this.handleVoiceButton}
-				>Start me!</button>
+				>
+					<SvgMic />
+				</div>
 			</div>
 		);
 	}	
+}
+
+function mapStateToProps(state) {
+	return {
+		searchValue: state.search.searchValue,
+	}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -100,7 +114,7 @@ function mapDispatchToProps(dispatch) {
 export {VoiceSearch};
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(VoiceSearch);
 

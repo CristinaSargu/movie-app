@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
+import classNames from 'classnames';
 import MovieCard from './MovieCard';
 import FirstScreen from './FirstScreen';
 import VoiceSearch from './VoiceSearch';
@@ -34,7 +35,7 @@ class Search extends Component {
 			})
 	}
 
-	renderPopular() {
+	renderItems() {
 		const {items} = this.state;
 
 		return (
@@ -50,6 +51,7 @@ class Search extends Component {
 		fetch('https://api.themoviedb.org/3/search/movie?api_key=629599926ec66fe2630d82d78db80df6&language=en-US&query=' + this.input.value + '&page=1&include_adult=false')
 			.then( response => response.json())
 			.then( ({results: items}) => { 
+				console.log("handleSearch items", items)
 				return this.setState({items});
 			})
 	}
@@ -59,6 +61,10 @@ class Search extends Component {
 	}
 
 	render() {
+		const buttonClasses = classNames('search__btn', {
+			'state-disabled': !this.props.searchValue,
+		});
+
 		return (
 			<div className="seach-section">
 				<FirstScreen
@@ -66,28 +72,28 @@ class Search extends Component {
 					firstScreenSubtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, placeat." />
 				<div className="container">
 					<div className="row">
-						<div className="col-md-8">
-							<div className="search">
-								<input
-									ref={(ref) => {this.input = ref}}
-									type="text"
-									className="search__field"
-									onChange={this.inputText}
-									value={this.props.searchValue}
-									placeholder="Enter movie title"/>
-								<button
-									className="search__btn"
-									onClick={this.handleSearch}
-								>Search</button>
+						<div className="col-md-12">
+							<div className="searching-area">
+								<VoiceSearch />
+								<div className="search">
+									<input
+										ref={(ref) => {this.input = ref}}
+										type="text"
+										className="search__field"
+										onChange={this.inputText}
+										value={this.props.searchValue}
+										placeholder="Enter movie title"/>
+									<button className={buttonClasses}>
+										<span className="clickable" onClick={this.handleSearch} />
+										Search
+									</button>
+								</div>
 							</div>
-						</div>
-						<div className="col-md-4">
-							<VoiceSearch />
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-md-12">
-							{this.renderPopular()}
+							{this.renderItems()}
 						</div>
 					</div>
 				</div>
