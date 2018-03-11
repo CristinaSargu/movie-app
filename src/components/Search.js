@@ -51,7 +51,6 @@ class Search extends Component {
 		fetch('https://api.themoviedb.org/3/search/movie?api_key=629599926ec66fe2630d82d78db80df6&language=en-US&query=' + this.input.value + '&page=1&include_adult=false')
 			.then( response => response.json())
 			.then( ({results: items}) => { 
-				console.log("handleSearch items", items)
 				return this.setState({items});
 			})
 	}
