@@ -5,6 +5,13 @@ function setSearchValue(payload) {
 	}
 }
 
+function resetSearchValue() {
+	return {
+		type: 'RESET_SEARCH_VALUE',
+	}
+}
+
 export {
 	setSearchValue,
+	resetSearchValue,
 }

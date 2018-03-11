@@ -9,6 +9,7 @@ import VoiceSearch from './VoiceSearch';
 
 import {
 	setSearchValue,
+	resetSearchValue,
 } from './../actions/search';
 
 class Search extends Component {
@@ -53,6 +54,8 @@ class Search extends Component {
 			.then( ({results: items}) => { 
 				return this.setState({items});
 			})
+
+		this.props.resetSearchValue();
 	}
 
 	inputText(event) {
@@ -110,6 +113,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		setSearchValue: bindActionCreators(setSearchValue, dispatch),
+		resetSearchValue: bindActionCreators(resetSearchValue, dispatch),
 	}
 }
 

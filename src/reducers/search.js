@@ -8,6 +8,10 @@ function search(state = initialState, action) {
 		return Object.assign({}, state, {
 			searchValue: action.payload,
 		});
+	case 'RESET_SEARCH_VALUE':
+		return Object.assign({}, state, {
+			searchValue: initialState.searchValue,
+		});
 	default:
 		return state;
 	}

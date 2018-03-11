@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import classNames from 'classnames';
 import {
 	setSearchValue,
+	resetSearchValue,
 } from './../actions/search';
 import SvgMic from './Svg/SvgMic';
 
@@ -77,6 +78,7 @@ class VoiceSearch extends Component {
 		if (this.state.isRecognising) {
 			this.recognition.stop();
 		} else {
+			this.props.resetSearchValue();
 			this.recognition.start();
 		}
 	}
@@ -108,6 +110,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		setSearchValue: bindActionCreators(setSearchValue, dispatch),
+		resetSearchValue: bindActionCreators(resetSearchValue, dispatch),
 	}
 }
 
