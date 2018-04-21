@@ -24,6 +24,7 @@ class SectionHome extends Component {
 							subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo molestiae consequuntur quo enim at rem excepturi, dolores iusto eligendi ut."/> 
 						<MovieList 
 							pageClass={pageClass}
+							categoryNumber={0}
 							category="popular"/>
 						<Link to="/popular" className="more-movies">View more</Link>
 					</div>
@@ -33,6 +34,7 @@ class SectionHome extends Component {
 							subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo molestiae consequuntur quo enim at rem excepturi, dolores iusto eligendi ut."/> 
 						<MovieList 
 							pageClass={pageClass}
+							categoryNumber={1}
 							category="top_rated"/>
 						<Link to="/top_rated" className="more-movies">View more</Link>
 					</div>
@@ -42,6 +44,7 @@ class SectionHome extends Component {
 							subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo molestiae consequuntur quo enim at rem excepturi, dolores iusto eligendi ut."/> 
 						<MovieList 
 							pageClass={pageClass}
+							categoryNumber={2}
 							category="upcoming"/>
 						<Link to="/upcoming" className="more-movies">View more</Link>
 					</div>

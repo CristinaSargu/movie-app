@@ -11,7 +11,23 @@ function resetSearchValue() {
 	}
 }
 
+function setVoiceNav(payload) {
+	return {
+		type: 'SET_VOICE_NAV',
+		payload,
+	}
+}
+
+function setVoiceSearch(payload) {
+	return {
+		type: 'SET_VOICE_SEARCH',
+		payload,
+	}
+}
+
 export {
 	setSearchValue,
 	resetSearchValue,
+	setVoiceNav,
+	setVoiceSearch,
 }

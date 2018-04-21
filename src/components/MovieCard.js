@@ -17,7 +17,8 @@ class MovieCard extends Component {
 			: posterSmall;
 
 		return (
-			<li key={id} className="movie-card">
+			<li key={id} className="movie-card" data-number={this.props.number} data-id={id}>
+				<span className="movie-card__number">{this.props.number}</span>
 				<img src={poster} alt={title} className="movie-card__img" /> 
 				<div className="movie-card__description">
 					<h4 className="movie-card__title">{title}</h4>

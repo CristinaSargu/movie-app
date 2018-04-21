@@ -49,6 +49,7 @@ class MovieList extends Component {
 			nextPage,
 			prevPage,
 			pageNumber,
+			categoryNumber,
 		} = this.props;
 
 		if (!items) {
@@ -59,13 +60,15 @@ class MovieList extends Component {
 			items.length = 4;
 		}
 
+		const number = categoryNumber ? categoryNumber : 0;
+
 		return (
 			<div className="container">
 				<div className="row">
 					<div className="col-md-12">
 						<ul className="movies">
 							{items.map((item, index) =>
-								<MovieCard key={index} item={item} />
+								<MovieCard key={index} number={index + number*4} item={item} />
 							)}
 						</ul>
 						<Pagination 

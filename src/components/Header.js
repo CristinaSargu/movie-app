@@ -6,7 +6,7 @@ import Logo from './Logo';
 class Header extends Component {
 	render() {
 		return (
-			<div className="header-wrapper">				
+			<div className="header-wrapper">		
 				<div className="container">
 					<div className="row">
 						<div className="col-md-3">

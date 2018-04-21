@@ -12,7 +12,7 @@ class Footer extends Component {
 							<Logo />
 						</div>
 						<div className="col-md-9">
-							<p className="copyright">@ The Movie DB API project. All rights reserve.</p>
+							<p className="copyright">@ The Movie App project. All rights reserve.</p>
 						</div>
 					</div>	
 				</div>

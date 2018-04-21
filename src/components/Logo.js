@@ -6,7 +6,7 @@ import logo from './../../public/img/logo.png'
 class Logo extends Component {
 	render() {
 		return (
-			<Link href="/" className="logo">				
+			<Link href="/" className="logo">
 				<img className="logo__img" src={logo} alt="Logo"/>
 			</Link>
 		);

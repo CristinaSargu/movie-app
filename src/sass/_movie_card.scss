@@ -6,6 +6,7 @@
   transition: all 0.3s ease-out;
   display: flex;
 	flex: 0 0 48%;
+	position: relative;
 
 	&:hover {
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -56,5 +57,14 @@
 		text-decoration: none;
 		bottom: 20px;;
 		padding: 10px 0;
+	}
+
+	&__number {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
+		padding: 10px 5px;
+		background-color: #FFF;
 	}
 }

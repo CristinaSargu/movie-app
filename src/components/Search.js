@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import classNames from 'classnames';
 import MovieCard from './MovieCard';
 import FirstScreen from './FirstScreen';
 import VoiceSearch from './VoiceSearch';
@@ -10,6 +9,8 @@ import VoiceSearch from './VoiceSearch';
 import {
 	setSearchValue,
 	resetSearchValue,
+	setVoiceNav,
+	setVoiceSearch,
 } from './../actions/search';
 
 class Search extends Component {
@@ -20,12 +21,24 @@ class Search extends Component {
 			items: [],
 		};
 
-		this.handleSearch = this.handleSearch.bind(this);
+		this.timer = null;
+
+		this.fetchResults = this.fetchResults.bind(this);
 		this.inputText = this.inputText.bind(this);
 	}
 
 	componentWillMount() {
 		this.fetchPopular();
+	}
+
+	componentWillReceiveProps(nexProps) {
+		clearTimeout(this.timer);
+
+		if (nexProps.searchValue) {
+			this.timer = setTimeout(() => {
+				this.fetchResults();
+			}, 2000);
+		}
 	}
 
 	fetchPopular(){
@@ -42,23 +55,22 @@ class Search extends Component {
 		return (
 			<ul className="movies">
 				{items.map((item, index) =>
-					<MovieCard key={index} item={item} />
+					<MovieCard key={index} number={index} item={item} />
 				)}
 			</ul>
 		);
 	}
 
-	handleSearch() {
-		fetch('https://api.themoviedb.org/3/search/multi?api_key=629599926ec66fe2630d82d78db80df6&language=en-US&query=' + this.input.value + '&page=1&include_adult=false')
-			.then( response => {
-				console.log('response', response.json())
-				return response.json()}
-			)
+	fetchResults() {
+		fetch('https://api.themoviedb.org/3/search/multi?api_key=629599926ec66fe2630d82d78db80df6&language=en-US&query=' + this.props.searchValue + '&page=1&include_adult=false')
+			.then( response => response.json())
 			.then( ({results: items}) => {
 				return this.setState({items});
 			})
 
 		this.props.resetSearchValue();
+		this.props.setVoiceNav(true);
+		this.props.setVoiceSearch(false);
 	}
 
 	inputText(event) {
@@ -66,10 +78,6 @@ class Search extends Component {
 	}
 
 	render() {
-		const buttonClasses = classNames('search__btn', {
-			'state-disabled': !this.props.searchValue,
-		});
-
 		return (
 			<div className="seach-section">
 				<FirstScreen
@@ -88,10 +96,6 @@ class Search extends Component {
 										onChange={this.inputText}
 										value={this.props.searchValue}
 										placeholder="Enter movie title"/>
-									<button className={buttonClasses}>
-										<span className="clickable" onClick={this.handleSearch} />
-										Search
-									</button>
 								</div>
 							</div>
 						</div>
@@ -117,6 +121,8 @@ function mapDispatchToProps(dispatch) {
 	return {
 		setSearchValue: bindActionCreators(setSearchValue, dispatch),
 		resetSearchValue: bindActionCreators(resetSearchValue, dispatch),
+		setVoiceNav: bindActionCreators(setVoiceNav, dispatch),
+		setVoiceSearch: bindActionCreators(setVoiceSearch, dispatch),
 	}
 }
 

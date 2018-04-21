@@ -1,28 +1,24 @@
 import React, {Component} from 'react';
+import {browserHistory} from 'react-router'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import classNames from 'classnames';
 import {
-	setSearchValue,
-	resetSearchValue,
 	setVoiceNav,
 	setVoiceSearch,
 } from './../actions/search';
-import SvgMic from './Svg/SvgMic';
 
-class VoiceSearch extends Component {
+class VoiceNav extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			isRecognising: false,
+			isRecognising: true,
 			finalTranscript: '',
 		};
 
 		this.recognition = null;
 
-		this.handleVoiceButton = this.handleVoiceButton.bind(this);
 		this.recognitionFunc = this.recognitionFunc.bind(this);
 		this.recognitionOnStart = this.recognitionOnStart.bind(this);
 		this.recognitionOnStart = this.recognitionOnStart.bind(this);
@@ -32,8 +28,16 @@ class VoiceSearch extends Component {
 		this.recognitionFunc();
 	}
 
+	componentDidMount() {
+		this.recognition.start();
+	}
+
+	componentWillUnmount() {
+		this.recognition.stop();
+	}
+
 	componentWillReceiveProps(nexProps) {
-		if (nexProps.isVoiceSearch && nexProps.isVoiceSearch !== this.props.isVoiceSearch) {
+		if (nexProps.isVoiceNav && nexProps.isVoiceNav !== this.props.isVoiceNav) {
 			this.recognition.start();
 		} else {
 			this.recognition.stop();
@@ -53,9 +57,7 @@ class VoiceSearch extends Component {
 	}
 
 	recognitionOnStart() {
-		this.setState({
-			isRecognising: true,
-		});
+		console.log("Start")
 	}
 
 	recognitionOnResult() {
@@ -72,50 +74,73 @@ class VoiceSearch extends Component {
 		});
 
 		console.log("recognitionOnResult", this.state.finalTranscript)
-		
-		this.props.setSearchValue(this.state.finalTranscript);
-		this.props.setVoiceNav(true);
-		this.props.setVoiceSearch(false);
+
+		if (this.props.location === '/search' && this.state.finalTranscript === 'Search for') {
+			this.recognition.stop();
+		}
+		this.changeRoute(this.state.finalTranscript);
+
+		if (!isNaN(this.state.finalTranscript)) {
+			this.openMovie(this.state.finalTranscript);
+		}
 	}
 
 	recognitionOnEnd() {
-		this.setState({
-			isRecognising: false,
-		});
+		console.log("End")
+		if (this.props.location === '/search' && this.state.finalTranscript === 'Search for') {
+			this.setState({
+				finalTranscript: '',
+			});
 
-		this.props.setVoiceNav(true);
-		this.props.setVoiceSearch(false);
+			this.props.setVoiceNav(false)
+			this.props.setVoiceSearch(true);
+		} else {
+			if (this.props.isVoiceNav) {
+				this.recognition.start();
+			}
+		}
+	}
+
+	openMovie(number) {
+		const item = document.querySelector(`li[data-number="${number}"]`);
+		browserHistory.push(`/movie/${item.dataset.id}`);
+	}
+
+	changeRoute(output) {
+		switch(output) {
+		case 'Home':
+			browserHistory.push('/');
+			break;
+		case 'Popular':
+			browserHistory.push('/popular');
+			break;
+		case 'Top rated':
+			browserHistory.push('/top_rated');
+			break;
+		case 'Upcoming':
+			browserHistory.push('/upcoming');
+			break;
+		case 'Search':
+		case 'Search for':
+			browserHistory.push('/search');
+			break;
+		case 'Move down':
+			window.scrollBy(0, 500);
+			break;
+		case 'Move up':
+			window.scrollBy(0, -500);
+		default:
+			return;
+		}
 	}
 
 	capitalize(result) {
 	  return result.charAt(0).toUpperCase() + result.slice(1);
 	}
 
-	handleVoiceButton() {
-		this.props.setVoiceNav(false);
-
-		if (this.state.isRecognising) {
-			this.props.setVoiceSearch(false);
-			this.props.setVoiceNav(true);
-		} else {
-			this.props.resetSearchValue();
-			this.props.setVoiceSearch(true);
-		}
-	}
-
 	render() {
-		const buttonClasses = classNames('voice-search__btn g-before', {
-			'state-recording': this.state.isRecognising && !this.props.searchValue,
-		});
-
 		return (
-			<div className="voice-search">
-				<div
-					className={buttonClasses}
-					onClick={this.handleVoiceButton}
-				>
-					<SvgMic />
-				</div>
+			<div className="voice-nav">
 			</div>
 		);
 	}	
@@ -123,24 +148,19 @@ class VoiceSearch extends Component {
 
 function mapStateToProps(state) {
 	return {
-		searchValue: state.search.searchValue,
+		isVoiceNav: state.search.isVoiceNav,
 		isVoiceSearch: state.search.isVoiceSearch,
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		setSearchValue: bindActionCreators(setSearchValue, dispatch),
-		resetSearchValue: bindActionCreators(resetSearchValue, dispatch),
 		setVoiceNav: bindActionCreators(setVoiceNav, dispatch),
 		setVoiceSearch: bindActionCreators(setVoiceSearch, dispatch),
 	}
 }
 
-export {VoiceSearch};
-
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(VoiceSearch);
-
+)(VoiceNav);
