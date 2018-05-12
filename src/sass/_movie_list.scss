@@ -1,9 +1,3 @@
-.movies {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
 .more-movies {
 	display: block;
 	margin: 0 auto;
@@ -15,4 +9,12 @@
 	color: $primary-color;
 	background-color: #FFF;
 	border-radius: 3px;
+}
+
+@media screen and (min-width: 768px) {
+	.movies {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
 }

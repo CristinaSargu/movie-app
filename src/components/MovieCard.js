@@ -19,7 +19,6 @@ class MovieCard extends Component {
 			? `https://image.tmdb.org/t/p/w185_and_h278_bestv2${poster_path}`
 			: posterSmall;
 
-		console.log("!!", contentType)
 		return (
 			<li key={id} className="movie-card" data-number={this.props.number} data-id={id}>
 				<span className="movie-card__number">{this.props.number}</span>

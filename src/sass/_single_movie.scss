@@ -1,16 +1,13 @@
 .single-movie {
 	padding: 60px 0;
 
-	&__about {
-		display: flex;
-		align-items: flex-start;
-	}
-
 	&__overview {
 		max-height: 100%;
 		height: auto;
 		overflow: visible;
 		color: #fff;
+		font-size: 15px;
+		line-height: 18px;
 		font-weight: 300;
 		margin-top: 40px;
 	}
@@ -22,7 +19,8 @@
 
 	&__img {
 		display: block;
-		width: 230px;
+		width: 200px;
+		margin: 0 auto;
 	}
 
 	&__cast-wrapper {
@@ -59,5 +57,19 @@
 		font-size: 15px;
 		font-weight: 300;
 		margin-bottom: 10px;
+	}
+}
+
+@media screen and (min-width: 660px) {
+	.single-movie {
+		&__about {
+			display: flex;
+			align-items: flex-start;
+		}
+
+		&__img {
+			width: 230px;
+			margin: 0;
+		}
 	}
 }

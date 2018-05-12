@@ -1,11 +1,6 @@
 .single-actor {
 	padding: 60px 0;
 
-	&__about {
-		display: flex;
-		align-items: flex-start;
-	}
-
 	&__biography {
 		color: #fff;
 		font-size: 15px;
@@ -22,7 +17,8 @@
 
 	&__img {
 		display: block;
-		width: 230px;
+		width: 200px;
+		margin: 0 auto;
 	}
 
 	&__name {
@@ -50,6 +46,20 @@
 			font-size: 22px;
 			margin-bottom: 30px;
 			flex: 0 0 100%;
+		}
+	}
+}
+
+@media screen and (min-width: 660px) {
+	.single-actor {
+		&__about {
+			display: flex;
+			align-items: flex-start;
+		}
+
+		&__img {
+			width: 230px;
+			margin: 0;
 		}
 	}
 }

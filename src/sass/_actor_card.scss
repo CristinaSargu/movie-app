@@ -1,12 +1,11 @@
 .actor-card {
-	width: 450px;
 	background-color: #fff;
 	margin-bottom: 35px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease-out;
-  display: flex;
 	flex: 0 0 48%;
 	position: relative;
+	padding: 15px 0 40px;
 
 	&:hover {
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -29,7 +28,7 @@
 		font-size: 14px;
 		color: $primary-color;
 		text-decoration: none;
-		bottom: 20px;;
+		bottom: -30px;
 		padding: 10px 0;
 	}
 
@@ -47,6 +46,7 @@
 		background: linear-gradient(to bottom, #f2f2f4, #f6f5f6);
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		min-height: 278px;
 	}
 
@@ -59,5 +59,23 @@
 	&__movie-title {
 		padding-left: 20px;
 		line-height: 20px;
+	}
+}
+
+@media screen and (min-width: 360px) {
+	.actor-card {
+		display: flex;
+		padding: 0;
+		text-align: left;
+
+		&__link {
+			bottom: 20px;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.actor-card {
+		width: 450px;
 	}
 }

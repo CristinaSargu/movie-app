@@ -1,7 +1,14 @@
 .footer-wrapper {
 	padding: 10px 0;
 }
+
 .copyright {
-	text-align: right;
+	text-align: center;
 	padding-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+	.copyright {
+		text-align: right;
+	}
 }

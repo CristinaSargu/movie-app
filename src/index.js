@@ -105,7 +105,7 @@ class App extends Component {
 		const {pathname} = this.props.location;
 
 		return (
-			<div>
+			<div className="movie-app">
 				<header>
 					<Header />
 					<VoiceNav location={pathname}/>		
