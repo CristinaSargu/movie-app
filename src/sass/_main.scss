@@ -1,5 +1,6 @@
 @import '/utils/mixins';
 
+@import 'actor_card';
 @import 'cast';
 @import 'first_screen';
 @import 'footer';
@@ -13,6 +14,7 @@
 @import 'search';
 @import 'section';
 @import 'similar_movies';
+@import 'single_actor';
 @import 'single_movie';
 @import 'trailer';
 @import 'voice_search';

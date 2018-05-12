@@ -103,7 +103,11 @@ class VoiceNav extends Component {
 
 	openMovie(number) {
 		const item = document.querySelector(`li[data-number="${number}"]`);
-		browserHistory.push(`/movie/${item.dataset.id}`);
+		if (item.dataset.type === 'person') {
+			browserHistory.push(`/actor/${item.dataset.id}`);
+		} else {
+			browserHistory.push(`/movie/${item.dataset.id}`);
+		}
 	}
 
 	changeRoute(output) {
@@ -129,6 +133,7 @@ class VoiceNav extends Component {
 			break;
 		case 'Move up':
 			window.scrollBy(0, -500);
+			break;
 		default:
 			return;
 		}

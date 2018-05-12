@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
+import ActorCard from './ActorCard';
 import MovieCard from './MovieCard';
 import FirstScreen from './FirstScreen';
 import VoiceSearch from './VoiceSearch';
@@ -27,7 +28,7 @@ class Search extends Component {
 		this.inputText = this.inputText.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.fetchPopular();
 	}
 
@@ -54,9 +55,12 @@ class Search extends Component {
 
 		return (
 			<ul className="movies">
-				{items.map((item, index) =>
-					<MovieCard key={index} number={index} item={item} />
-				)}
+				{items.map((item, index) => {
+					if(item.media_type === 'person') {
+						return <ActorCard key={index} number={index} item={item} />;
+					}
+					return <MovieCard key={index} number={index} item={item} />;
+				})}
 			</ul>
 		);
 	}

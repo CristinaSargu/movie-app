@@ -9,8 +9,7 @@ import Header 				from './components/Header';
 import SectionHome 		from './components/SectionHome';
 import Section 				from './components/Section';
 import SingleMovie 		from './components/SingleMovie';
-import Trailer 				from './components/Trailer';
-import SimilarMovies 	from './components/SimilarMovies';
+import SingleActor 		from './components/SingleActor';
 import Search 				from './components/Search';
 import Footer 				from './components/Footer';
 import VoiceNav 			from './components/VoiceNav';
@@ -91,38 +90,13 @@ class SearchMoviePage extends Component {
 
 class SingleMoviePage extends Component {
 	render() {
-		return (
-			<div>
-				<section className="single-movie-section"> 
-					<div className="container">
-						<div className="row">
-							<div className="col-md-12">
-								<SingleMovie id={this.props.params.id} />
-							</div>
-						</div>
-					</div>
-				</section>
-				<section className=""> 
-					<div className="container">
-						<div className="row">
-							<div className="col-md-12">
-								<Trailer id={this.props.params.id} />
-							</div>
-						</div>
-					</div>
-				</section>
-				<section className="similar-movies-section"> 
-					<div className="container">
-						<div className="row">
-							<div className="col-md-12">
-								<h3 className="similar-wrapper-title">Similar movies</h3>
-								<SimilarMovies id={this.props.params.id} />
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		);
+		return <SingleMovie type={this.props.params.media_type} id={this.props.params.id} />;
+	}
+}
+
+class SingleActorPage extends Component {
+	render() {
+		return <SingleActor id={this.props.params.id} />;
 	}
 }
 
@@ -153,7 +127,8 @@ ReactDOM.render((
 	  		    <Route path="/top_rated" component={TopRatedPage} />
 	  		    <Route path="/upcoming" component={UpcomingPage} />
 	  		    <Route path="/search" component={SearchMoviePage} />
-	  		    <Route path="/movie/:id" component={SingleMoviePage} />
+	  		    <Route path="/actor/:id" component={SingleActorPage} />
+	  		    <Route path="/:media_type/:id" component={SingleMoviePage} />
 	  		  </Route>
   		</Router>
   	</Provider>

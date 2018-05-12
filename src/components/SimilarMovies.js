@@ -17,9 +17,9 @@ class SimilarMovies extends Component {
 	}
 
 	fetchMovieData() {
-		const {id} = this.props;
+		const {id, type} = this.props;
 
-		fetch('https://api.themoviedb.org/3/movie/'  + id + '/similar?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
+		fetch('https://api.themoviedb.org/3/' + type + '/'  + id + '/similar?api_key=629599926ec66fe2630d82d78db80df6&language=en-US')
 			.then( response => response.json())
 			.then((json) => {
 				this.setState({similar: json});
@@ -27,13 +27,14 @@ class SimilarMovies extends Component {
 	}
 
 	renderSimilarMovie(item) {
+		const {type} = this.props;
 		return (
-			<li key={item.title}>
+			<li key={item.id}>
 				{item.poster_path ? 
 					<img src={"https://image.tmdb.org/t/p/w250_and_h141_bestv2" + item.poster_path} alt="" className="similar__img"/>
 					: <img src={posterSimilar} alt="" className="similar__img"/>} 
 				
-				<Link href={'/movie/' + item.id} className="similar__title">{item.title}</Link>
+				<Link href={`/${type}/${item.id}`} className="similar__title">{item.title ? item.title: item.name}</Link>
 				<p className="similar__rating">{item.vote_average} &#9733;</p>
 			</li>
 		);
